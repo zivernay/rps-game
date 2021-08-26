@@ -2,7 +2,10 @@ const playChoices = ["rock", "paper", "scissors"]
 let playerInput;
 let computerChoice;
 let playerName;
-
+let wins = 0;
+let losses = 0;
+let draws = 0;
+let result;
 
 function getPlayerInput(){
     let toolChoice = prompt('rock | paper | scissors');
@@ -15,7 +18,7 @@ function validateInput(input){
         console.log("...");
         return true
     }
-    console.log(`${playerName} your supposed to pick rock, paper or scissors.`)
+    console.log(`${playerName} you are supposed to pick rock, paper or scissors.`)
     return false
 }
 
@@ -48,7 +51,7 @@ function choiceComparison(computerChoice, playerInput){
 function intro(){
     const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
     console.log(welcomeMessage);
-    const playerName = prompt('You can call me...');
+    playerName = prompt('You can call me...');
 }
 function game(){
     const pregameMessage = `
@@ -63,3 +66,43 @@ function game(){
     }
     else {console.log('Game stopped')}
 }
+
+function playGame(count = 5){
+    if (count === 1){
+        result = game();
+        score(result);
+    }else {
+        result = game();
+        score(result);
+        playGame(count-1)}
+}
+
+function score(result){
+    switch (true){
+        case result === 1:
+            wins++;
+            break;
+        case result === 0:
+            draws++;
+            break;
+        case result ===-1:
+            losses++;
+            break;
+        default:
+            console.log('internal error, game stopped')
+    }
+}
+
+function showStats(){
+    console.log(`
+    ${playerName}   wins = ${wins}
+                  losses = ${losses}
+                   draws = ${draws}
+    Overally out of 5 games you ${(wins>losses) ? 'won' : 'lost'}`)
+}
+function start(){
+    intro();
+    playGame(5);
+    showStats();
+}
+start();
