@@ -1,7 +1,7 @@
-const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
 const playChoices = ["rock", "paper", "scissors"]
 let playerInput;
 let computerChoice;
+let playerName;
 
 
 function getPlayerInput(){
@@ -33,6 +33,7 @@ function getValidInput(){
 function choiceComparison(computerChoice, playerInput){
     switch (true){
         case playerInput === computerChoice:
+            console.log("it's a draw")
             return 0;
         case playerInput === 'rock' && computerChoice === 'scissors':
         case playerInput === 'paper' && computerChoice === 'rock':
@@ -44,17 +45,21 @@ function choiceComparison(computerChoice, playerInput){
             return -1
     }
 }
-
-function game(){
+function intro(){
+    const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
     console.log(welcomeMessage);
     const playerName = prompt('You can call me...');
+}
+function game(){
     const pregameMessage = `
         Okay ${playerName} 
         Rock, Paper or Scissors`;
     playerInput = getValidInput();
-    computerChoice = computerChoice();
+    computerChoice = computerPlay();
     if (playerInput && computerChoice) {
-        return choiceComparison()
+        console.log(`${playerName}: ${playerInput}`)
+        console.log(`computer:  ${computerChoice}`)
+        return choiceComparison(computerChoice, playerInput)
     }
     else {console.log('Game stopped')}
 }
