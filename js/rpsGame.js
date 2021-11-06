@@ -7,30 +7,12 @@ let losses = 0;
 let draws = 0;
 let result;
 
-function getPlayerInput(){
-    let toolChoice = prompt('rock | paper | scissors');
-    return toolChoice
-}
 
-function validateInput(input){
-    let inputLowerCase = input.toLowerCase();
-    if (inputLowerCase === "rock" || inputLowerCase === "paper" || inputLowerCase === "scissors"){
-        console.log("...");
-        return true
-    }
-    console.log(`${playerName} you are supposed to pick rock, paper or scissors.`)
-    return false
-}
 
 function computerPlay(){
     let randomIndex = Math.floor(Math.random() * playChoices.length);
     computerChoice = playChoices[randomIndex];
     return playChoices[randomIndex]
-}
-
-function getValidInput(){
-    let input = getPlayerInput();
-    return ((validateInput(input)) ? input : null)
 }
 
 function choiceComparison(computerChoice, playerInput){
@@ -53,11 +35,11 @@ function intro(){
     console.log(welcomeMessage);
     playerName = prompt('You can call me...');
 }
+
 function game(){
     const pregameMessage = `
         Okay ${playerName} 
         Rock, Paper or Scissors`;
-    playerInput = getValidInput();
     computerChoice = computerPlay();
     if (playerInput && computerChoice) {
         console.log(`${playerName}: ${playerInput}`)
@@ -67,10 +49,15 @@ function game(){
     else {console.log('Game stopped')}
 }
 
+
 function playGame(){
-            result = game();
-            score(result);
-    }
+    const choice = this.getAttribute("id");
+    const choiceIndex = playChoices.indexOf(choice);
+    if (choiceIndex === -1) return
+    playerInput = playChoices[choiceIndex];
+    result = game();
+    score(result);
+}
 
 function score(result){
     switch (true){
@@ -88,16 +75,10 @@ function score(result){
     }
 }
 
-function showStats(){
-    console.log(`
-    ${playerName}   wins = ${wins}
-                  losses = ${losses}
-                   draws = ${draws}
-    Overally out of 5 games you ${(wins>losses) ? 'won' : 'lost'}`)
-}
-function start(){
-    intro();
-    playGame(5);
-    showStats();
-}
-start();
+//Events
+intro()
+const buttons = document.querySelectorAll(".option");
+buttons.forEach((button) => {button.addEventListener("click",
+                            playGame)
+                        }
+            )
