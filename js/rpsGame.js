@@ -67,15 +67,10 @@ function game(){
     else {console.log('Game stopped')}
 }
 
-function playGame(count = 5){
-    if (count === 1){
-        result = game();
-        score(result);
-    }else {
-        result = game();
-        score(result);
-        playGame(count-1)}
-}
+function playGame(){
+            result = game();
+            score(result);
+    }
 
 function score(result){
     switch (true){
