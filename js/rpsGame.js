@@ -1,63 +1,36 @@
-
-let playerInput;
-let computerChoice;
-let playerName;
-let wins = 0;
-let losses = 0;
-let draws = 0;
-let result;
-
-
-
-function computerPlay(){
-
-}
-
-function choiceComparison(computerChoice, playerInput){
-    switch (true){
-        case playerInput === computerChoice:
-            console.log("it's a draw")
-            return 0;
-        case playerInput === 'rock' && computerChoice === 'scissors':
-        case playerInput === 'paper' && computerChoice === 'rock':
-        case playerInput === 'scissors' && computerChoice === 'paper':
-            console.log('You won!')
-            return 1
-        default:
-            console.log('Oooh you lost')
-            return -1
-    }
-}
 function intro(){
     const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
     console.log(welcomeMessage);
-    playerName = prompt('You can call me...');
 }
+intro()
+const playerName = getPlayerName()
+let wins = 0;
+let losses = 0;
+let draws = 0;
 
-function game(){
-    const pregameMessage = `
-        Okay ${playerName} 
-        Rock, Paper or Scissors`;
-    if (playerInput && computerChoice) {
-        console.log(`${playerName}: ${playerInput}`)
-        console.log(`computer:  ${computerChoice}`)
-        return choiceComparison(computerChoice, playerInput)
+function playGame(){
+    const selections = getSelections(this)
+    if (selections.computerSelection && selections.playerSelection) {
+        showSelections(playerName, selections)
+        const result = selectionComparison(selections.computerSelection, selections.playerSelection)
+        showResults(result);
+        score(result);
     }
-    else {console.log('Game stopped')}
+    else {console.log('Game stopped')};
 }
 
-function getSelections(){
+function getSelections(element){
     //Get computer and player selections and returns an object or undefined if
     // there's an error
     const playChoices = ["rock", "paper", "scissors"];
-
+    // Get random selection for the computer
     const randomIndex = Math.floor(Math.random() * playChoices.length);
     const computerSelection = playChoices[randomIndex];
-
-    const choice = this.getAttribute("id");
+    // Get selected choice from player
+    const choice = element.getAttribute("id");
     const choiceIndex = playChoices.indexOf(choice);
-    if (choiceIndex === -1) return
-    playerSelections = playChoices[choiceIndex];
+    if (choiceIndex === -1) return //stop excercution for invalid user index
+    const playerSelection = playChoices[choiceIndex];
 
     const selections = {
         "playerSelection" : playerSelection,
@@ -65,27 +38,58 @@ function getSelections(){
     };
     return selections
 }
-function score(result){
+
+function getPlayerName(){
+    const playerName = prompt('enter username')
+    return playerName
+}
+
+function showSelections(playerName, selections){
+    console.log(`${playerName}: ${selections.playerSelection}`)
+    console.log(`computer:  ${selections.computerSelection}`)
+}
+
+function selectionComparison(computerSelection, playerSelection){
     switch (true){
-        case result === 1:
+        case playerSelection === computerSelection:
+            return 0;
+        case playerSelection === 'rock' && computerSelection === 'scissors':
+        case playerSelection === 'paper' && computerSelection === 'rock':
+        case playerSelection === 'scissors' && computerSelection === 'paper':
+            return 1
+        default:
+            return -1
+    }
+}
+
+function showResults(result) {
+    switch (result) {
+        case -1 :
+            console.log('Oooh you lost');
+            break;
+        case 0 :
+            console.log("It's a draw");
+            break;
+        case 1 :
+            console.log("You won!")
+    }
+}
+
+function score(result){
+    switch (result){
+        case 1:
             wins++;
             break;
-        case result === 0:
+        case 0:
             draws++;
             break;
-        case result ===-1:
+        case -1:
             losses++;
             break;
         default:
             console.log('internal error, game stopped')
     }
 }
-
-function playGame(){
-    result = game();
-    score(result);
-}
-
 //Events
 intro()
 const buttons = document.querySelectorAll(".option");
