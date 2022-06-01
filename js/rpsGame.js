@@ -9,14 +9,23 @@ let losses = 0;
 let draws = 0;
 
 function playGame(){
-    const selections = getSelections(this)
-    if (selections.computerSelection && selections.playerSelection) {
+    const selections = getSelections(this);
+    if (isGameOver()){
+        document.body.innerHTML = "<h1 align=center>Game Over</h1>"
+    }
+    else if (selections.computerSelection && selections.playerSelection) {
         showSelections(playerName, selections)
         const result = selectionComparison(selections.computerSelection, selections.playerSelection)
         showResults(result);
         score(result);
     }
     else {console.log('Game stopped')};
+}
+function isGameOver(){
+    if (wins + losses + draws > 5){
+        return true
+    }
+    else false;
 }
 
 function getSelections(element){
