@@ -1,4 +1,4 @@
-const playChoices = ["rock", "paper", "scissors"]
+
 let playerInput;
 let computerChoice;
 let playerName;
@@ -10,9 +10,7 @@ let result;
 
 
 function computerPlay(){
-    let randomIndex = Math.floor(Math.random() * playChoices.length);
-    computerChoice = playChoices[randomIndex];
-    return playChoices[randomIndex]
+
 }
 
 function choiceComparison(computerChoice, playerInput){
@@ -40,7 +38,6 @@ function game(){
     const pregameMessage = `
         Okay ${playerName} 
         Rock, Paper or Scissors`;
-    computerChoice = computerPlay();
     if (playerInput && computerChoice) {
         console.log(`${playerName}: ${playerInput}`)
         console.log(`computer:  ${computerChoice}`)
@@ -49,16 +46,25 @@ function game(){
     else {console.log('Game stopped')}
 }
 
+function getSelections(){
+    //Get computer and player selections and returns an object or undefined if
+    // there's an error
+    const playChoices = ["rock", "paper", "scissors"];
 
-function playGame(){
+    const randomIndex = Math.floor(Math.random() * playChoices.length);
+    const computerSelection = playChoices[randomIndex];
+
     const choice = this.getAttribute("id");
     const choiceIndex = playChoices.indexOf(choice);
     if (choiceIndex === -1) return
-    playerInput = playChoices[choiceIndex];
-    result = game();
-    score(result);
-}
+    playerSelections = playChoices[choiceIndex];
 
+    const selections = {
+        "playerSelection" : playerSelection,
+        "computerSelection" : computerSelection
+    };
+    return selections
+}
 function score(result){
     switch (true){
         case result === 1:
@@ -73,6 +79,11 @@ function score(result){
         default:
             console.log('internal error, game stopped')
     }
+}
+
+function playGame(){
+    result = game();
+    score(result);
 }
 
 //Events
