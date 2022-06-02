@@ -11,7 +11,9 @@ let draws = 0;
 function playGame(){
     const selections = getSelections(this);
     if (isGameOver()){
-        document.body.innerHTML = "<h1 align=center>Game Over</h1>"
+        document.body.innerHTML = "<h1 align=center>Game Over</h1>";
+        const result = (wins > losses) ? "you Win" : "you Lost"
+        showScores(result)
     }
     else if (selections.computerSelection && selections.playerSelection) {
         showSelections(playerName, selections)
@@ -26,6 +28,16 @@ function isGameOver(){
         return true
     }
     else false;
+}
+
+function showScores(result){
+    console.log(`wins   :${wins}`);
+    console.log(`losses :${losses}`);
+    console.log(`draws  :${draws}`);
+    const div = document.createElement('div');
+    div.innerHTML = `<h2 style="margin-top: 50px; text-align:center">${result}<h2>`;
+    document.body.appendChild(div);
+
 }
 
 function getSelections(element){
