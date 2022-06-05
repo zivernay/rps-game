@@ -1,12 +1,13 @@
+//intro()
+//const playerName = getPlayerName()
+let wins = 0;
+let losses = 0;
+let draws = 0;
+
 function intro(){
     const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
     console.log(welcomeMessage);
 }
-intro()
-const playerName = getPlayerName()
-let wins = 0;
-let losses = 0;
-let draws = 0;
 
 function playGame(){
     const selections = getSelections(this);
@@ -112,7 +113,7 @@ function score(result){
     }
 }
 //Events
-intro()
+//intro()
 const buttons = document.querySelectorAll(".option");
 buttons.forEach((button) => {button.addEventListener("click",
                             playGame)
