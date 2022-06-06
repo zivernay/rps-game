@@ -80,3 +80,57 @@ body {
 .seperator {
     color: #A5BECC;
 }
+.logo {
+    color: #F2EBE9;
+}
+.tooltip {
+    font-size: 24px;
+}
+
+/*
+=================================================
+    header
+=================================================
+*/
+.profiles {
+    background-color: #243A73;
+}
+.profiles, .profile, .edit {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+.player, .computer {
+    flex-grow: 0;
+    width: min-content;
+    background-color: #F2EBE9;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 0.5em;
+
+}
+.profile .name {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+.edit {
+    margin-left: 2em;
+    
+}
+.edit .icon {
+    width: 24px;
+    height: auto;
+    opacity: 75%;
+    background-color: #A5BECC;
+}
+.tooltip {
+    display: none;
+}
+.edit.active {
+    background-color: #A5BECC;
+}
+.hidden {
+    visibility: hidden;
+}
