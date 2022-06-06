@@ -60,10 +60,32 @@ table {
 
 /*
 =================================================
-    typography
+    layout
 =================================================
 */
 body {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+header {
+    height: 120px;
+    flex: 0 0 auto;
+}
+main {
+    flex-grow: 1;
+}
+footer {
+    height: 30px;
+    flex: 0 0 auto;
+}
+
+/*
+=================================================
+    typography
+=================================================
+*/
+body , button{
     font: 400 36px/60px 'Glory', sans-serif;
     color: #243A73;
 }
@@ -85,6 +107,12 @@ body {
 }
 .tooltip {
     font-size: 24px;
+}
+.title {
+    font-size: 76px;
+    line-height: 100px;
+    font-weight: 400;
+    text-align: center;
 }
 
 /*
@@ -133,4 +161,35 @@ body {
 }
 .hidden {
     visibility: hidden;
+}
+
+
+/*
+=================================================
+    Landing page
+=================================================
+*/
+.menu {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    height: 100%;
+}
+.menu .quick {
+    min-width: min-content;
+    flex: 1 0 auto;
+    padding: 10px;
+    background-color: #243A73;
+}
+.menu .custom {
+    min-width: 720px;
+    flex: 2 0 auto;
+    background-color: #F2EBE9;
+}
+.startQG {
+    background-color: #A5BECC;
+    padding: 1em;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
 }

@@ -38,30 +38,39 @@
             </ul>
         </header>
         <main class="game">
-            <aside class="quick">
-                <span>Quick</span>
-                <span>Game</span>
-            </aside>
-            <article class="custom">
-                <h2> Custom new Game</h2>
-                <form action="#">
-                    <fieldset>
-                        <label for="playerName">Player Name</label>
-                        <input type="text" id="playerName" name="playerName">
-                        <label for="numberOfRound">Number of Rounds</label>
-                        <input type="number" id="rounds" name="numberOfRounds">
-                        <button>infinite</button>
-                        <button>START</button>
-                    </fieldset>
-                </form>
-            </article>
+            <section class="menu">
+                <aside class="quick">
+                    <button class="startQG">
+                        <span class="title">Quick</span></br>
+                        <span class="title">Game</span>
+                    </button>
+                </aside>
+                <article class="custom">
+                    <h2 class="title"> Custom new Game</h2>
+                    <form action="#">
+                        <fieldset>
+                            <div>
+                                <label for="playerName">Player Name</label>
+                                <input type="text" id="playerName" name="playerName">
+                            </div>
+                            <div>
+                                <label for="numberOfRound">Number of Rounds</label>
+                                <input type="number" id="rounds" name="numberOfRounds">
+                                <button>infinite</button>
+                            </div>
+                            <button>START</button>
+                        </fieldset>
+                    </form>
+                </article>
+            </section>
         </main>
         <footer>Copyright info</footer>
-        <div id="options">
+        <!--
+            <div id="options">
             <button class="option" id="rock">rock</button>
             <button class="option" id="paper">paper</button>
             <button class="option" id="scissors">scissors</button>
         </div>
-        
+    -->
     </body>
 </html>
