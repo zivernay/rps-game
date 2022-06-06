@@ -67,6 +67,7 @@ body {
     display: flex;
     height: 100vh;
     flex-direction: column;
+    background-color: #243A73;
 }
 header {
     height: 120px;
@@ -86,7 +87,7 @@ footer {
 =================================================
 */
 body , button{
-    font: 400 36px/60px 'Glory', sans-serif;
+    font: 400 24px/44px 'Glory', sans-serif;
     color: #243A73;
 }
 .bigLetters, .seperator {
@@ -114,15 +115,15 @@ body , button{
     font-weight: 400;
     text-align: center;
 }
-
+.field label {
+    font-weight: 100;
+}
 /*
 =================================================
     header
 =================================================
 */
-.profiles {
-    background-color: #243A73;
-}
+
 .profiles, .profile, .edit {
     display: flex;
     flex-flow: row nowrap;
@@ -174,17 +175,20 @@ body , button{
     flex-flow: row nowrap;
     align-items: stretch;
     height: 100%;
+    padding: 10px;
 }
 .menu .quick {
     min-width: min-content;
     flex: 1 0 auto;
-    padding: 10px;
-    background-color: #243A73;
+    padding-right: 10px;
 }
 .menu .custom {
     min-width: 720px;
     flex: 2 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
     background-color: #F2EBE9;
+    border-radius: 20px;
 }
 .startQG {
     background-color: #A5BECC;
@@ -192,4 +196,37 @@ body , button{
     height: 100%;
     width: 100%;
     border-radius: 20px;
+}
+
+form{
+    flex-grow: 1;
+}
+fieldset {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.field {
+    height: 100px;
+    width: 400px;
+}
+.field input {
+    background-color: #A5BECC;
+    height: 44px;
+}
+#playerName {
+    width: 100%;
+}
+.rounds {
+    width: 50%;
+    height: 44px;
+    vertical-align: middle;
+}
+.startCG {
+    color: #243A73;
+    background-color: #A5BECC;
+    width: 100%;
+    height: 100%;
 }
