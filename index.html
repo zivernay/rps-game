@@ -5,32 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <link rel="stylesheet" href="style/app.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Glory:wght@100;400;700&display=swap" rel="stylesheet"> 
         <script src="js/rpsGame.js" defer></script>
     </head>
     <body>
         <header>
             <ul>
                 <li class="playerProfile">
-                    <div class="icon"></div>
-                    <div class="name"></div>
+                    <div class="icon"><img src="./resources/icons/person_FILL0_wght400_GRAD0_opsz48.svg" alt=""></div>
+                    <div class="name">Huei</div>
                     <div class="edit">
-                        <div class="icon"></div>
+                        <div class="icon"><img src="./resources/icons/edit_FILL0_wght400_GRAD0_opsz48.svg" alt=""></div>
                         <span class="tooltip">edit</span>
                     </div>
                 </li>
                 <li class="gameProfile">
                     <div class="logo">
-                        <span class="bigLetters">R</span>
-                        <span class="smallcaps">OCK</span>
-                        <span class="bigLetters">P</span>
-                        <span class="smallcaps">APPER</span>
-                        <span class="bigLetters">S</span>
-                        <span class="smallcaps">CISSORS</span>
+                        <span class="bigLetters">R</span><!-- Removing the white spce between spans by commenting it out
+                        --><span class="smallcaps">OCK</span><!--
+                        --><span class="seperator">|</span><!--
+                        --><span class="bigLetters">P</span><!--
+                        --><span class="smallcaps">APPER</span><!--
+                        --><span class="seperator">|</span><!--
+                        --><span class="bigLetters">S</span><!--
+                        --><span class="smallcaps">CISSORS</span>
                     </div>
                 </li>
                 <li class="computerProfile">
-                    <div class="name"></div>
-                    <div class="icon"></div>
+                    <div class="name"><img src="./resources/icons/computer_FILL0_wght400_GRAD0_opsz48.svg" alt=""></div>
+                    <div class="icon">Computer</div>
                 </li>
             </ul>
         </header>
