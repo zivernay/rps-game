@@ -70,13 +70,13 @@ body {
     background-color: #243A73;
 }
 header {
-    height: 120px;
+    height: 80px;
 }
 main {
     flex-grow: 1;
 }
 footer {
-    height: 30px;
+    height: 20px;
 
 }
 
@@ -90,8 +90,8 @@ body , button, .input{
     color: #243A73;
 }
 .bigLetters, .seperator {
-    font-size: 96px;
-    line-height: 120px;
+    font-size: 56px;
+    line-height: 80px;
 }
 .bigLetters {
     font-weight: 700;
@@ -109,19 +109,20 @@ body , button, .input{
     font-size: 24px;
 }
 .title {
-    font-size: 76px;
-    line-height: 100px;
+    font-size: 56px;
+    line-height: 80px;
     font-weight: 400;
     text-align: center;
 }
 .field label {
     font-weight: 100;
 }
-footer {
-    font-size: 14px;
+.copyrights {
+    font-size: 12px;
     color: #F2EBE9;
-    line-height: 30px;
-    text-align: center;
+    line-height: 20px;
+    text-align: right;
+    padding-right: 1em;
 }
 /*
 =================================================
@@ -165,8 +166,8 @@ footer {
 .edit.active {
     background-color: #A5BECC;
 }
-.hidden {
-    visibility: hidden;
+.game .hidden {
+    display: none;
 }
 
 
@@ -180,7 +181,8 @@ footer {
     flex-flow: row nowrap;
     align-items: stretch;
     height: 100%;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .menu .quick {
     min-width: min-content;
@@ -217,6 +219,7 @@ fieldset {
     height: 100px;
     width: 400px;
 }
+
 .field input {
     background-color: #a5becc33;
     height: 44px;
@@ -245,4 +248,32 @@ button.rounds {
     width: 100%;
     height: 100%;
     border-radius: 20px;
+}
+
+/*
+=================================================
+ play section
+=================================================
+*/
+
+.controls {
+    background-color: #A5BECC;
+    display: flex;
+    flex-flow: raw nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    height: 80px;
+    flex-shrink: 0;
+}
+.controls button {
+    width: 200px;
+    color: #F2EBE9;
+    border-radius: 5px;
+}
+.controls .restart {
+    background-color: #243A73;
+}
+.controls .quit {
+    background-color: #7C3E66;
 }
