@@ -106,7 +106,8 @@ body , button, .input{
     color: #F2EBE9;
 }
 .tooltip {
-    font-size: 24px;
+    font-size: 12px;
+    line-height: 20px;
 }
 .title {
     font-size: 56px;
@@ -134,21 +135,24 @@ body , button, .input{
 =================================================
 */
 
-.profiles, .profile, .edit {
+.profiles, .profile {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-around;
-   
+}
+.edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .player, .computer {
     flex-grow: 0;
     width: min-content;
     background-color: #F2EBE9;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 12px;
     border-radius: 0.5em;
-
+    overflow: clip;
 }
 .profile .name {
     margin-left: 1em;
@@ -156,19 +160,18 @@ body , button, .input{
 }
 .edit {
     margin-left: 2em;
+    background-color: #a5becc;
+    opacity: 0.25;
+    padding-right: 12px;
     
+}
+.edit.show {
+    height:48px;
+    opacity: 1;
 }
 .edit .icon {
     width: 24px;
     height: auto;
-    opacity: 75%;
-    background-color: #A5BECC;
-}
-.tooltip {
-    display: none;
-}
-.edit.active {
-    background-color: #A5BECC;
 }
 
 

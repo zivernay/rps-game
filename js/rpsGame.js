@@ -122,3 +122,23 @@ function startQuickGame () {
     gameSection.children[1].classList.remove("hidden")
 }
 
+playerProfile.children[2].addEventListener('mouseover', showToolTip);
+function showToolTip (event) {
+    const toolTip = document.querySelector(".tooltip");
+    toolTip.classList.remove("hidden");
+    this.classList.add("show")
+}
+playerProfile.children[2].addEventListener("click", editPlayerName);
+function editPlayerName () {
+    playerName = prompt("Enter player name");
+    playerProfile.children[1].textContent = playerName;
+}
+playerProfile.addEventListener("mouseleave", removeToolTip, {capture: true});
+function removeToolTip (event) {
+    if (event.target == this) {
+        console.log(event)
+        const toolTip = document.querySelector(".tooltip");
+        toolTip.classList.add("hidden");
+        toolTip.parentElement.classList.remove("show")
+    }
+}
