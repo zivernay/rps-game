@@ -1,13 +1,7 @@
-//intro()
-//const playerName = getPlayerName()
+let playerName;
 let wins = 0;
 let losses = 0;
 let draws = 0;
-
-function intro(){
-    const welcomeMessage = "Welcome to console Rock paper Scissors, to begin please enter your usernmae...";
-    console.log(welcomeMessage);
-}
 
 function playGame(){
     const selections = getSelections(this);
@@ -113,9 +107,18 @@ function score(result){
     }
 }
 //Events
-//intro()
-const buttons = document.querySelectorAll(".option");
-buttons.forEach((button) => {button.addEventListener("click",
-                            playGame)
-                        }
-            )
+const quickGameBtn = document.querySelector(".game .startQG");
+const profiles = document.querySelector(".profiles")
+const playerProfile = document.querySelector(".profiles .player")
+const gameSection = document.querySelector(".game");
+
+quickGameBtn.addEventListener("click", startQuickGame);
+function startQuickGame () {
+    playerName = "Anonymous";
+    playerProfile.children[1].textContent = playerName;
+    profiles.children[0].classList.remove("hidden")
+    profiles.children[2].classList.remove("hidden");
+    gameSection.children[0].classList.add("hidden")
+    gameSection.children[1].classList.remove("hidden")
+}
+
