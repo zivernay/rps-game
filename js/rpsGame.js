@@ -1,34 +1,39 @@
 let playerName;
-let wins = 0;
-let losses = 0;
-let draws = 0;
+let pwins = 0;
+let plosses = 0;
+let pdraws = 0;
+let compWins = 0;
+let compLosses = 0;
+let compDraws = 0;
+let round = 1;
 
-function playGame(){
-    const selections = getSelections(this);
+function playGame(element){
+    const selections = getSelections(element);
     if (isGameOver()){
         document.body.innerHTML = "<h1 align=center>Game Over</h1>";
-        const result = (wins > losses) ? "you Win" : "you Lost"
+        const result = (pwins > plosses) ? "you Win" : "you Lost"
         showScores(result)
     }
     else if (selections.computerSelection && selections.playerSelection) {
         showSelections(playerName, selections)
         const result = selectionComparison(selections.computerSelection, selections.playerSelection)
-        showResults(result);
         score(result);
+        showResults(result);
     }
     else {console.log('Game stopped')};
+    round++;
 }
 function isGameOver(){
-    if (wins + losses + draws > 5){
+    if (round > 5){
         return true
     }
     else false;
 }
 
 function showScores(result){
-    console.log(`wins   :${wins}`);
-    console.log(`losses :${losses}`);
-    console.log(`draws  :${draws}`);
+    console.log(`pwins   :${pwins}`);
+    console.log(`plosses :${plosses}`);
+    console.log(`pdraws  :${pdraws}`);
     const div = document.createElement('div');
     div.innerHTML = `<h2 style="margin-top: 50px; text-align:center">${result}<h2>`;
     document.body.appendChild(div);
@@ -79,28 +84,41 @@ function selectionComparison(computerSelection, playerSelection){
 }
 
 function showResults(result) {
+    const playerScores = document.querySelectorAll(".player .score");
+    const computerScores = document.querySelectorAll(".computer .score");
+    playerScores[3].children[1].textContent = round
+    computerScores[3].children[1].textContent = round
     switch (result) {
         case -1 :
-            console.log('Oooh you lost');
+            console.log(`Oooh you lost ${plosses}`);
+            playerScores[1].children[1].textContent = plosses;
+            computerScores[0].children[1].textContent = compWins;
             break;
         case 0 :
-            console.log("It's a draw");
+            console.log(`It's a draw ${pdraws}`);
+            playerScores[2].children[1].textContent = pdraws;
+            computerScores[2].children[1].textContent = compDraws;
             break;
         case 1 :
-            console.log("You won!")
+            console.log(`You won! ${pwins}`);
+            playerScores[0].children[1].textContent = pwins;
+            computerScores[1].children[1].textContent = compLosses;
     }
 }
 
 function score(result){
     switch (result){
         case 1:
-            wins++;
+            pwins++;
+            compLosses++;
             break;
         case 0:
-            draws++;
+            pdraws++;
+            compDraws++;
             break;
         case -1:
-            losses++;
+            plosses++;
+            compWins++;
             break;
         default:
             console.log('internal error, game stopped')
@@ -136,9 +154,15 @@ function editPlayerName () {
 playerProfile.addEventListener("mouseleave", removeToolTip, {capture: true});
 function removeToolTip (event) {
     if (event.target == this) {
-        console.log(event)
         const toolTip = document.querySelector(".tooltip");
         toolTip.classList.add("hidden");
         toolTip.parentElement.classList.remove("show")
     }
+}
+
+const options = document.querySelectorAll(".options figure");
+options.forEach((option) => {option.addEventListener("click", play)});
+function play (event) {
+    playGame(this)
+
 }
