@@ -70,13 +70,13 @@ body {
     background-color: #243A73;
 }
 header {
-    height: 80px;
+    height: 13.5vh
 }
 main {
-    flex-grow: 1;
+    height: 82.5vh;
 }
 footer {
-    height: 20px;
+    height: 4vh;
 
 }
 
@@ -264,6 +264,7 @@ button.rounds {
     display: flex;
     flex-flow: column nowrap;
     height: 100%;
+    max-height: 82.5vh;
     background-color: #F2EBE9;
 }
 .play .session {
@@ -309,11 +310,12 @@ button.rounds {
 .controls {
     background-color: #A5BECC;
     display: flex;
-    flex-flow: raw nowrap;
+    flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
     gap: 100px;
     height: 80px;
+    max-height: 13.5vh;
     flex-shrink: 0;
 }
 .controls button {
@@ -331,6 +333,7 @@ button.rounds {
 .frame {
     display: flex;
     flex-flow: row nowrap;
+
     gap: 20px;
 }
 .options {
@@ -342,6 +345,7 @@ button.rounds {
 .options figure {
     flex: 1 0 auto;
     height: 120px;
+    max-height: 27.5vh;
     position: relative;
     overflow: clip;
 }
@@ -359,12 +363,11 @@ button.rounds {
 }
 .choices {
     flex: 1 1 auto;
+    max-height: 69vh;
     width: 200px;
     position: relative;
 }
-.choices figure {
-    height: 50%;
-}
+
 .choices .result {
     position: absolute;
     width: 100px;
@@ -375,14 +378,36 @@ button.rounds {
     top: 50%;
     translate: -50% -50%;
 }
-.frame img {
-    height: auto;
-    width: 100%;
-    max-width: 300px;
-    object-fit: contain;
-    vertical-align: bottom;
+.frame .img {
+    height: 100%;
+    width: auto;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: right center;
+    
 }
 
+.choices .choice {
+    position: relative;
+    border: 2px solid #243A73;
+    width: 100%;
+    padding: 0;
+    height: 50%;
+}
+.choice .profilePic, .choice figcaption{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+.profilePic {
+    width: 30px;
+    height: auto;
+}
+.choice .img {
+    height: 100%;
+    width: auto;
+    max-height: 34.5vh;
+}
 /*
 =================================================
     custom classes
