@@ -75,6 +75,12 @@ header {
 main {
     height: 82.5vh;
 }
+.session {
+    height: 69vh;
+}
+.controls {
+    height: ;
+}
 footer {
     height: 4vh;
 
@@ -344,10 +350,14 @@ button.rounds {
 }
 .options figure {
     flex: 1 0 auto;
+    display: inline-flex;
+    justify-content: center;
     height: 120px;
     max-height: 27.5vh;
     position: relative;
     overflow: clip;
+    border-radius: 20px;
+    background: content-box radial-gradient(#7C3E66, #A5BECC);
 }
 .options figcaption {
     background-color: #A5BECC;
@@ -363,7 +373,6 @@ button.rounds {
 }
 .choices {
     flex: 1 1 auto;
-    max-height: 69vh;
     width: 200px;
     position: relative;
 }
@@ -384,24 +393,28 @@ button.rounds {
     max-height: 300px;
     object-fit: cover;
     object-position: right center;
-    
 }
 
 .choices .choice {
+    background: content-box radial-gradient(#7C3E66, #A5BECC);
     position: relative;
-    border: 2px solid #243A73;
     width: 100%;
     padding: 0;
     height: 50%;
 }
 .choice .profilePic, .choice figcaption{
     position: absolute;
-    top: 15px;
-    left: 30px;
+    top: 5px;
+    left: 10px;
 }
-.profilePic {
-    width: 30px;
-    height: auto;
+.choice figcaption {
+    left: 30px;
+    font-size: 16px;
+}
+
+.profilePic img {
+    height: 16px;
+    width: auto;
 }
 .choice .img {
     height: 100%;
