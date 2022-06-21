@@ -79,7 +79,7 @@ main {
     height: 69vh;
 }
 .controls {
-    height: ;
+    height: 19.5;
 }
 footer {
     height: 4vh;
@@ -232,7 +232,7 @@ fieldset {
 }
 
 .field input {
-    background-color: #a5becc33;
+    background-color: #a5becc60;
     height: 44px;
     padding-left: 1em;
 }
@@ -428,4 +428,14 @@ button.rounds {
 */
 .hidden {
     display: none;
+}
+.game .custom .field .selected {
+    background-color: #243A73;
+    color: #F2EBE9;
+    opacity: 1;
+}
+.game .custom .field .unselected {
+    opacity: 0.5;
+    color: #243A73;
+    background-color: #a5becc60;
 }

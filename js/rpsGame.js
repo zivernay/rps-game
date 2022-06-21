@@ -6,10 +6,11 @@ let compWins = 0;
 let compLosses = 0;
 let compDraws = 0;
 let round = 1;
-
+let rounds = 5;
+let isfinite = true;
 function playGame(element){
     const selections = getSelections(element);
-    if (isGameOver()){
+    if (isfinite && isGameOver()){
         document.body.innerHTML = "<h1 align=center>Game Over</h1>";
         const result = (pwins > plosses) ? "you Win" : "you Lost"
         showScores(result)
@@ -24,7 +25,7 @@ function playGame(element){
     round++;
 }
 function isGameOver(){
-    if (round > 5){
+    if (round > rounds){
         return true
     }
     else false;
@@ -35,6 +36,7 @@ function showScores(result){
     console.log(`plosses :${plosses}`);
     console.log(`pdraws  :${pdraws}`);
     const div = document.createElement('div');
+    document.body.style.color = "white"
     div.innerHTML = `<h2 style="margin-top: 50px; text-align:center">${result}<h2>`;
     document.body.appendChild(div);
 
@@ -61,13 +63,13 @@ function getSelections(element){
 }
 
 function getPlayerName(){
-    const playerName = prompt('enter username')
+    const playerName = prompt('enter username');
     return playerName
 }
 
 function showSelections(playerName, selections){
-    console.log(`${playerName}: ${selections.playerSelection}`)
-    console.log(`computer:  ${selections.computerSelection}`)
+    console.log(`${playerName}: ${selections.playerSelection}`);
+    console.log(`computer:  ${selections.computerSelection}`);
 }
 
 function selectionComparison(computerSelection, playerSelection){
@@ -81,7 +83,7 @@ function selectionComparison(computerSelection, playerSelection){
         default:
             return -1
     }
-}
+};
 
 function showResults(result) {
     const playerScores = document.querySelectorAll(".player .score");
@@ -104,7 +106,7 @@ function showResults(result) {
             playerScores[0].children[1].textContent = pwins;
             computerScores[1].children[1].textContent = compLosses;
     }
-}
+};
 
 function score(result){
     switch (result){
@@ -123,23 +125,75 @@ function score(result){
         default:
             console.log('internal error, game stopped')
     }
-}
+};
 //Events
 const quickGameBtn = document.querySelector(".game .startQG");
-const profiles = document.querySelector(".profiles")
-const playerProfile = document.querySelector(".profiles .player")
+const customGameBtn = document.querySelector(".game .startCG");
+const profiles = document.querySelector(".profiles");
+const playerProfile = document.querySelector(".profiles .player");
 const gameSection = document.querySelector(".game");
+const infinityBtn = document.querySelector("#infinity");
+const numberOfRounds = document.querySelector("#numberOfRounds");
 
 quickGameBtn.addEventListener("click", startQuickGame);
 function startQuickGame () {
     playerName = "Anonymous";
+    startGame();
+}
+function startGame () {
     playerProfile.children[1].textContent = playerName;
-    profiles.children[0].classList.remove("hidden")
-    profiles.children[2].classList.remove("hidden");
-    gameSection.children[0].classList.add("hidden")
-    gameSection.children[1].classList.remove("hidden")
+    profiles.children[0].classList.remove("hidden"); //show player name
+    profiles.children[2].classList.remove("hidden"); // show comp name
+    gameSection.children[0].classList.add("hidden") // hide start buttons
+    gameSection.children[1].classList.remove("hidden"); // show game screen
+};
+
+customGameBtn.addEventListener("click", startCustomGame);
+function startCustomGame() {
+    //get player name
+    let name = document.querySelector("#playerName");
+    playerName = name.value;
+    if (playerName == undefined || playerName == "") {
+        name.focus();
+        return
+    }
+    // get number of rounds
+    rounds = getRounds();
+    startGame();
+};
+function getRounds() {
+    rounds = parseInt(numberOfRounds.value);
 }
 
+// infinite rounds for custom game
+infinityBtn.addEventListener("click", endLessMode);
+function endLessMode() {
+    // switch isfinite to false
+    isfinite = false;
+    // dim rounds section
+    // highlight infinity button
+    showSelections(this, numberOfRounds)
+}
+
+function showSelections(target, other) {
+    if (!(target.classList.contains("selected"))){
+        other.classList.remove("selected");
+        target.classList.add("selected");
+        other.classList.add("unselected");
+        target.classList.remove("unselected");
+    }
+}
+
+//finite rounds custom game
+numberOfRounds.addEventListener("click",finiteMode);
+function finiteMode () {
+    console.log(this);
+    console.log(infinityBtn);
+    showSelections(this, infinityBtn);
+};
+
+
+//Edit player name with tooltip appearing and disappearing
 playerProfile.children[2].addEventListener('mouseover', showToolTip);
 function showToolTip (event) {
     const toolTip = document.querySelector(".tooltip");
@@ -164,5 +218,4 @@ const options = document.querySelectorAll(".options figure");
 options.forEach((option) => {option.addEventListener("click", play)});
 function play (event) {
     playGame(this)
-
 }
