@@ -172,10 +172,10 @@ function endLessMode() {
     isfinite = false;
     // dim rounds section
     // highlight infinity button
-    showSelections(this, numberOfRounds)
+    highlightSelections(this, numberOfRounds)
 }
 
-function showSelections(target, other) {
+function highlightSelections(target, other) {
     if (!(target.classList.contains("selected"))){
         other.classList.remove("selected");
         target.classList.add("selected");
@@ -189,7 +189,7 @@ numberOfRounds.addEventListener("click",finiteMode);
 function finiteMode () {
     console.log(this);
     console.log(infinityBtn);
-    showSelections(this, infinityBtn);
+    highlightSelections(this, infinityBtn);
 };
 
 
