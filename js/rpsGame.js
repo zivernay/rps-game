@@ -8,12 +8,13 @@ let compDraws = 0;
 let round = 1;
 let rounds = 5;
 let isfinite = true;
+const playerScores = document.querySelectorAll(".player .score");
+const computerScores = document.querySelectorAll(".computer .score");
+
 function playGame(element){
     const selections = getSelections(element);
     if (isfinite && isGameOver()){
-        document.body.innerHTML = "<h1 align=center>Game Over</h1>";
-        const result = (pwins > plosses) ? "you Win" : "you Lost"
-        showScores(result)
+        gameOver();
     }
     else if (selections.computerSelection && selections.playerSelection) {
         showSelections(playerName, selections)
@@ -23,6 +24,11 @@ function playGame(element){
     }
     else {console.log('Game stopped')};
     round++;
+}
+function gameOver() {
+    document.body.innerHTML = "<h1 align=center>Game Over</h1>";
+    const result = (pwins > plosses) ? "you Win" : "you Lost"
+    showScores(result)
 }
 function isGameOver(){
     if (round > rounds){
@@ -86,8 +92,6 @@ function selectionComparison(computerSelection, playerSelection){
 };
 
 function showResults(result) {
-    const playerScores = document.querySelectorAll(".player .score");
-    const computerScores = document.querySelectorAll(".computer .score");
     playerScores[3].children[1].textContent = round
     computerScores[3].children[1].textContent = round
     switch (result) {
@@ -134,6 +138,8 @@ const playerProfile = document.querySelector(".profiles .player");
 const gameSection = document.querySelector(".game");
 const infinityBtn = document.querySelector("#infinity");
 const numberOfRounds = document.querySelector("#numberOfRounds");
+const quitBtn = document.querySelector(".controls .quit");
+const restartBtn = document.querySelector(".controls .restart");
 
 quickGameBtn.addEventListener("click", startQuickGame);
 function startQuickGame () {
@@ -214,6 +220,30 @@ function removeToolTip (event) {
     }
 }
 
+restartBtn.addEventListener("click", restartGame);
+function restartGame() {
+    pwins = 0;
+    plosses = 0;
+    pdraws = 0;
+    compWins = 0;
+    compLosses = 0;
+    compDraws = 0;
+    round = 1;
+    resetResults();
+}
+
+function resetResults() {
+    playerScores[3].children[1].textContent = round
+    computerScores[3].children[1].textContent = round
+    playerScores[1].children[1].textContent = plosses;
+    computerScores[0].children[1].textContent = compWins;
+    playerScores[2].children[1].textContent = pdraws;
+    computerScores[2].children[1].textContent = compDraws;
+    playerScores[0].children[1].textContent = pwins;
+    computerScores[1].children[1].textContent = compLosses;
+}
+
+quitBtn.addEventListener("click", gameOver);
 const options = document.querySelectorAll(".options figure");
 options.forEach((option) => {option.addEventListener("click", play)});
 function play (event) {
