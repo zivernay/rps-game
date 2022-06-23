@@ -10,6 +10,7 @@ let rounds = 5;
 let isfinite = true;
 const playerScores = document.querySelectorAll(".player .score");
 const computerScores = document.querySelectorAll(".computer .score");
+const scoreSummary = document.querySelectorAll(".scores .summary")
 
 function playGame(element){
     const selections = getSelections(element);
@@ -94,23 +95,35 @@ function selectionComparison(computerSelection, playerSelection){
 function showResults(result) {
     playerScores[3].children[1].textContent = round
     computerScores[3].children[1].textContent = round
+    const span = document.createElement("span");
     switch (result) {
         case -1 :
             console.log(`Oooh you lost ${plosses}`);
             playerScores[1].children[1].textContent = plosses;
             computerScores[0].children[1].textContent = compWins;
+            //show summary score
+            span.classList.add("lose");
+            span.textContent = "-";
             break;
         case 0 :
             console.log(`It's a draw ${pdraws}`);
             playerScores[2].children[1].textContent = pdraws;
             computerScores[2].children[1].textContent = compDraws;
+
+            span.classList.add("draw");
+            span.textContent = "=";
             break;
         case 1 :
             console.log(`You won! ${pwins}`);
             playerScores[0].children[1].textContent = pwins;
             computerScores[1].children[1].textContent = compLosses;
+
+            span.classList.add("win")
+            span.textContent = "+";
     }
+    scoreSummary[0].appendChild(span);
 };
+
 
 function score(result){
     switch (result){
@@ -231,7 +244,6 @@ function restartGame() {
     round = 1;
     resetResults();
 }
-
 function resetResults() {
     playerScores[3].children[1].textContent = round
     computerScores[3].children[1].textContent = round

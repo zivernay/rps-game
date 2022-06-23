@@ -81,7 +81,7 @@ main {
 .controls {
     height: 19.5;
 }
-footer {
+#footer {
     height: 4vh;
 
 }
@@ -131,9 +131,12 @@ body , button, .input{
     text-align: right;
     padding-right: 1em;
 }
-.summary {
+.scores .summary span{
     font-size: 16px;
     line-height: 20px;
+    height: 20px;
+    text-align: center;
+    border-left: 1px solid #f2ebe9;
 }
 /*
 =================================================
@@ -286,6 +289,9 @@ button.rounds {
 }
 .scores main {
     flex-grow: 1;
+}.player.scores .summary {
+    display: flex;
+    flex-flow: row nowrap;
 }
 .computer.scores .summary {
     display: flex;
@@ -438,4 +444,21 @@ button.rounds {
     opacity: 0.5;
     color: #243A73;
     background-color: #a5becc60;
+}
+
+.scores .summary span {
+    display: inline-block;
+    width: 20px;
+}
+.scores .summary .win {
+    background-color: #243A73;
+    color: #F2EBE9;
+}
+.scores .summary .lose {
+    background-color: #7C3E66;
+    color: #F2EBE9;
+}
+.scores .summary .draw {
+    background-color: #A5BECC;
+    color: #243A73;
 }
