@@ -450,6 +450,9 @@ button.rounds {
     display: inline-block;
     width: 20px;
 }
+.scores .summary span:first-child {
+    border: 2px inset #A5BECC;
+}
 .scores .summary .win {
     background-color: #243A73;
     color: #F2EBE9;

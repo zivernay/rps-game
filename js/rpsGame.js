@@ -121,7 +121,7 @@ function showResults(result) {
             span.classList.add("win")
             span.textContent = "+";
     }
-    scoreSummary[0].appendChild(span);
+    scoreSummary[0].prepend(span);
 };
 
 
