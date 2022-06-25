@@ -96,14 +96,19 @@ function showResults(result) {
     playerScores[3].children[1].textContent = round
     computerScores[3].children[1].textContent = round
     const span = document.createElement("span");
+    const compSpan = document.createElement("span");
     switch (result) {
         case -1 :
             console.log(`Oooh you lost ${plosses}`);
             playerScores[1].children[1].textContent = plosses;
             computerScores[0].children[1].textContent = compWins;
-            //show summary score
+            //show summary score for player
             span.classList.add("lose");
             span.textContent = "-";
+
+            //show summary score for comp
+            compSpan.classList.add("win");
+            compSpan.textContent = "+";
             break;
         case 0 :
             console.log(`It's a draw ${pdraws}`);
@@ -112,6 +117,9 @@ function showResults(result) {
 
             span.classList.add("draw");
             span.textContent = "=";
+
+            compSpan.classList.add("draw");
+            compSpan.textContent = "=";
             break;
         case 1 :
             console.log(`You won! ${pwins}`);
@@ -120,8 +128,12 @@ function showResults(result) {
 
             span.classList.add("win")
             span.textContent = "+";
+
+            compSpan.classList.add("lose");
+            compSpan.textContent = "-";
     }
     scoreSummary[0].prepend(span);
+    scoreSummary[1].prepend(compSpan);
 };
 
 

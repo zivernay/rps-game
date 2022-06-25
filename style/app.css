@@ -447,11 +447,12 @@ button.rounds {
 }
 
 .scores .summary span {
-    display: inline-block;
     width: 20px;
+    flex-shrink: 0;
 }
 .scores .summary span:first-child {
     border: 2px inset #A5BECC;
+    line-height: 16px;
 }
 .scores .summary .win {
     background-color: #243A73;
