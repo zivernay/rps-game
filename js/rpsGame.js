@@ -11,6 +11,11 @@ let isfinite = true;
 const playerScores = document.querySelectorAll(".player .score");
 const computerScores = document.querySelectorAll(".computer .score");
 const scoreSummary = document.querySelectorAll(".scores .summary")
+const frame = document.querySelector(".frame");
+const gameOverDiv = document.querySelector(".gameOver");
+const choices = document.querySelector(".frame .choices");
+const options = document.querySelector(".frame .options");
+let winOrLoss;
 
 function playGame(element){
     const selections = getSelections(element);
@@ -27,9 +32,12 @@ function playGame(element){
     round++;
 }
 function gameOver() {
-    document.body.innerHTML = "<h1 align=center>Game Over</h1>";
-    const result = (pwins > plosses) ? "you Win" : "you Lost"
-    showScores(result)
+    gameOverDiv.classList.remove("hidden")
+    winOrLoss = (pwins > plosses) ? "you Win" : "you Lost"
+    showScores(winOrLoss)
+    choices.classList.add("hidden");
+    options.classList.add("hidden")
+    _ = (winOrLoss == "you Win") ? frame.classList.add("win") : frame.classList.add("lost");
 }
 function isGameOver(){
     if (round > rounds){
@@ -38,15 +46,12 @@ function isGameOver(){
     else false;
 }
 
-function showScores(result){
+function showScores(winOrLoss){
     console.log(`pwins   :${pwins}`);
     console.log(`plosses :${plosses}`);
     console.log(`pdraws  :${pdraws}`);
-    const div = document.createElement('div');
-    document.body.style.color = "white"
-    div.innerHTML = `<h2 style="margin-top: 50px; text-align:center">${result}<h2>`;
-    document.body.appendChild(div);
-
+    const textResult = document.querySelector(".endText.textResult");
+    textResult.textContent = winOrLoss;
 }
 
 function getSelections(element){
@@ -171,7 +176,7 @@ function startQuickGame () {
     playerName = "Anonymous";
     startGame();
 }
-function startGame () {
+function startGame() {
     playerProfile.children[1].textContent = playerName;
     profiles.children[0].classList.remove("hidden"); //show player name
     profiles.children[2].classList.remove("hidden"); // show comp name
@@ -255,6 +260,14 @@ function restartGame() {
     compDraws = 0;
     round = 1;
     resetResults();
+    startGame();
+    scoreSummary[0].innerHTML = "";
+    scoreSummary[1].innerHTML = "";
+    gameOverDiv.classList.add("hidden");
+    choices.classList.remove("hidden");
+    options.classList.remove("hidden");
+    frame.classList.remove("win");
+    frame.classList.remove("lost");
 }
 function resetResults() {
     playerScores[3].children[1].textContent = round
@@ -268,8 +281,8 @@ function resetResults() {
 }
 
 quitBtn.addEventListener("click", gameOver);
-const options = document.querySelectorAll(".options figure");
-options.forEach((option) => {option.addEventListener("click", play)});
+const gameOptions = document.querySelectorAll(".options figure");
+gameOptions.forEach((option) => {option.addEventListener("click", play)});
 function play (event) {
     playGame(this)
 }

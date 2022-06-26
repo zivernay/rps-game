@@ -138,6 +138,15 @@ body , button, .input{
     text-align: center;
     border-left: 1px solid #f2ebe9;
 }
+h1 {
+    font-size: 44px;
+    line-height: 72px;
+    padding-top: 50px;
+}
+.gameOver {
+    width: 100%;
+    text-align: center;
+}
 /*
 =================================================
     header
@@ -263,7 +272,14 @@ button.rounds {
     height: 100%;
     border-radius: 20px;
 }
-
+.endText {
+    background-color: #A5BECC;
+    padding: 20px;
+    border-radius: 10px;
+}
+.gameOver > div{
+    margin-top: 100px;
+}
 /*
 =================================================
  play section
@@ -427,6 +443,7 @@ button.rounds {
     width: auto;
     max-height: 34.5vh;
 }
+
 /*
 =================================================
     custom classes
@@ -465,4 +482,16 @@ button.rounds {
 .scores .summary .draw {
     background-color: #A5BECC;
     color: #243A73;
+}
+.frame.lost,
+.frame.win {
+    background-clip: border-box;
+    background-size: cover;
+    background-position: center;
+}
+.game .frame.lost {
+    background-image: url("../resources/pexels-shamia-casiano-944737.jpg");
+}
+.game .frame.win {
+    background-image: url("../resources/pexels-nataliya-vaitkevich-6532373.jpg");
 }
