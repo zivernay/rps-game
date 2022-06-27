@@ -381,6 +381,11 @@ button.rounds {
     border-radius: 20px;
     background: content-box radial-gradient(#7C3E66, #A5BECC);
 }
+.options figure:hover {
+    height: 150px;
+    border:5px outset #243A73;
+    cursor:url("../resources/icons/pointer-svgrepo-com.svg"), pointer;
+}
 .options figcaption {
     background-color: #A5BECC;
     height: 30px;
