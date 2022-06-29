@@ -24,6 +24,8 @@ function playGame(element){
     }
     else if (selections.computerSelection && selections.playerSelection) {
         showSelections(playerName, selections)
+        showChoice(selections.playerSelection, choices.children[0]);
+        showChoice(selections.computerSelection, choices.children[1]);
         const result = selectionComparison(selections.computerSelection, selections.playerSelection)
         score(result);
         showResults(result);
@@ -170,6 +172,7 @@ const infinityBtn = document.querySelector("#infinity");
 const numberOfRounds = document.querySelector("#numberOfRounds");
 const quitBtn = document.querySelector(".controls .quit");
 const restartBtn = document.querySelector(".controls .restart");
+const PENDING_IMG = "./resources/icons/pending_FILL0_wght400_GRAD0_opsz48.svg";
 
 quickGameBtn.addEventListener("click", startQuickGame);
 function startQuickGame () {
@@ -285,4 +288,17 @@ const gameOptions = document.querySelectorAll(".options figure");
 gameOptions.forEach((option) => {option.addEventListener("click", play)});
 function play (event) {
     playGame(this)
+}
+
+function showChoice(choice, figure) {
+    switch (choice) {
+        case ("rock"):
+            figure.children[0].setAttribute("src", "./resources/rock.jpg");
+            break
+        case ("paper"):
+            figure.children[0].setAttribute("src", "./resources/paper.jpg");
+            break
+        case ("scissors"):
+            figure.children[0].setAttribute("src", "./resources/scissors.jpg")
+    }
 }
